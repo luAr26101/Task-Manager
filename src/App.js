@@ -1,11 +1,11 @@
 import "./App.css";
+import MyFirstComponent from "./components/MyFirstComponent";
 
 function App() {
   return (
     <div className='App'>
       <header className='App-header'>
-        <h1>Salutare, baieti si fete!!!</h1>
-        <p>Haideti sa invatam React!</p>
+        <MyFirstComponent />
       </header>
     </div>
   );

@@ -1,5 +1,5 @@
 import "./App.css";
-import TaskCard from "./components/task-card/TaskCard";
+import TaskContainer from "./components/task-container/TaskContainer";
 
 function App() {
   const data = [
@@ -24,25 +24,9 @@ function App() {
   ];
 
   return (
-    <div className="app-container">
-      <TaskCard
-        id={data[0].id}
-        status={data[0].status}
-        name={data[0].name}
-        dueDate={data[0].dueDate}
-      />
-      <TaskCard
-        id={data[1].id}
-        status={data[1].status}
-        name={data[1].name}
-        dueDate={data[1].dueDate}
-      />
-      <TaskCard
-        id={data[2].id}
-        status={data[2].status}
-        name={data[2].name}
-        dueDate={data[2].dueDate}
-      />
+    <div className='app-container'>
+      <h1>Task Manager</h1>
+      <TaskContainer taskData={data} />
     </div>
   );
 }

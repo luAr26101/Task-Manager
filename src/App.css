@@ -1,7 +1,14 @@
 .app-container {
-  background-color: #f3f3fb;
+  /* background-color: #f3f3fb; */
   min-height: 100vh;
-  display: flex;
+  padding: 4.375rem;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+}
+
+.app-container h1 {
+  font-size: 1.625rem;
+  margin: 0;
+  font-weight: 400;
 }

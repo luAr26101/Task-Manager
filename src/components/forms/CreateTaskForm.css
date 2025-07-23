@@ -37,6 +37,7 @@ textarea.input-primary {
   border: none;
   cursor: pointer;
   font-family: "Sen", sans-serif;
+  width: 100%;
 }
 
 .button-primary:hover {

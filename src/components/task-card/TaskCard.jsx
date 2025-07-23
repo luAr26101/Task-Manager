@@ -8,6 +8,7 @@ function TaskCard(props) {
 
   const handleClick = () => {
     setCount((prev) => prev + 1);
+    console.log(`cnt ${count}`);
   };
 
   return (

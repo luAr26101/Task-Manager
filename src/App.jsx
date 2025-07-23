@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import CreateTaskForm from "./components/forms/CreateTaskForm";
 import TaskViewer from "./components/task-viewer/TaskViewer";
 const data = [
   {
@@ -47,21 +48,17 @@ const data = [
 ];
 
 function App() {
-
-
   return (
-    <div className="app-container">
-      <div className="app-content">
-
+    <div className='app-container'>
+      <div className='app-content'>
         <TaskViewer taskList={data} />
 
-        <div className="side-bar-right">
+        <div className='side-bar-right'>
           <div className='card-xl'>
-            
-            <div/>
+            <h3>Create task</h3>
+            <CreateTaskForm />
           </div>
         </div>
-
       </div>
     </div>
   );

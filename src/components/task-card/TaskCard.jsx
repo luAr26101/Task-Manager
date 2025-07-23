@@ -1,28 +1,28 @@
 import React, { useState } from "react";
-import "./TaskCard.css";
 import Badge from "../badge/Badge";
-import DateContainer from "../date-container/DateContainer";
+import "./TaskCard.css";
 
 function TaskCard(props) {
-  const [taskId, setTaskId] = useState(props.id)
+  // const [taskId, setTaskId] = useState(props.id);
+  const [count, setCount] = useState(0);
 
   const handleClick = () => {
-    setTaskId("Clicked!")
-    console.log(taskId);
+    setCount((prev) => prev + 1);
   };
 
   return (
-    <div className="card-wrapper">
-      <div className="card-header">
-        <p className="task-id">{taskId}</p>
+    <div className='card-wrapper'>
+      <div className='card-header'>
+        <p className='task-id'>{props.id}</p>
         <Badge status={props.status} />
       </div>
-      <div className="card-content">
-        <p>{props.name}</p>
+      <div className='card-content'>
+        {/* <p>{props.name}</p> */}
+        <p>{count}</p>
       </div>
-      <div className="card-footer">
-        <button onClick={handleClick}>Click me!</button>
-        <DateContainer date={props.dueDate} />
+      <div className='card-footer'>
+        <button onClick={handleClick}>Increment</button>
+        {/* <DateContainer date={props.dueDate} /> */}
       </div>
     </div>
   );

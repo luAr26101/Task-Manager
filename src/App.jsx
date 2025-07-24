@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import TaskViewer from "./components/task-viewer/TaskViewer";
 import CreateTaskForm from "./components/forms/CreateTaskForm";
+import TaskViewer from "./components/task-viewer/TaskViewer";
 
 const data = [
   {
@@ -49,15 +49,23 @@ const data = [
 ];
 
 function App() {
-  return (
-    <div className="app-container">
-      <div className="app-content">
-        <TaskViewer taskList={data} />
+  const [taskList, setTaskList] = useState(data);
 
-        <div className="side-bar-right">
-          <div className="card-xl">
+  const handleAddingNewTask = function (task) {
+    setTaskList((prevTaskList) => [
+      ...prevTaskList,
+      { ...task, id: `T-${prevTaskList.length + 1} ` },
+    ]);
+  };
+  return (
+    <div className='app-container'>
+      <div className='app-content'>
+        <TaskViewer taskList={taskList} />
+
+        <div className='side-bar-right'>
+          <div className='card-xl'>
             <h3>Create task</h3>
-            <CreateTaskForm />
+            <CreateTaskForm addNewTask={handleAddingNewTask} />
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./CreateTaskForm.css";
 
-const CreateTaskForm = () => {
+const CreateTaskForm = ({ addNewTask }) => {
   const [taskName, setTaskName] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [taskDetails, setTaskDetails] = useState("");
@@ -28,10 +28,12 @@ const CreateTaskForm = () => {
     event.preventDefault();
     const newTask = {
       name: taskName,
-      dueDate: dueDate,
+      dueDate: new Date(dueDate),
       taskDetails: taskDetails,
       status: "To do",
     };
+
+    addNewTask(newTask);
 
     console.log("newTask = ", newTask);
     resetForm();
@@ -40,41 +42,41 @@ const CreateTaskForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label className="label-md">Task Name</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Name</label>
           <input
             value={taskName}
-            name="taskName"
+            name='taskName'
             onChange={handleNameChange}
-            className="input-primary"
-            type="text"
+            className='input-primary'
+            type='text'
           />
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Due Date</label>
+        <div className='form-row'>
+          <label className='label-md'>Due Date</label>
           <input
             value={dueDate}
-            name="dueDate"
+            name='dueDate'
             onChange={handleDateChange}
-            className="input-primary"
-            type="date"
+            className='input-primary'
+            type='date'
           />
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Task Details</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Details</label>
           <textarea
             value={taskDetails}
-            name="taskDetails"
+            name='taskDetails'
             onChange={handleDetailsChange}
-            className="input-primary"
-            cols="30"
-            rows="10"
+            className='input-primary'
+            cols='30'
+            rows='10'
           ></textarea>
         </div>
 
-        <button className="button-primary" type="submit">
+        <button className='button-primary' type='submit'>
           Create Task
         </button>
       </form>

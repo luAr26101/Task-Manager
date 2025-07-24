@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
-import TaskViewer from "./components/task-viewer/TaskViewer";
 import CreateTaskForm from "./components/forms/CreateTaskForm";
+import Modal from "./components/modal/Modal";
+import TaskViewer from "./components/task-viewer/TaskViewer";
 
 const data = [
   {
@@ -50,6 +51,15 @@ const data = [
 
 function App() {
   const [taskList, setTaskList] = useState(data);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = function () {
+    setIsOpen(true);
+  };
+
+  const closeModal = function () {
+    setIsOpen(false);
+  };
 
   const onNewTaskAdd = (newTask) => {
     setTaskList((prevState) => [
@@ -57,23 +67,20 @@ function App() {
       {
         ...newTask,
         dueDate: new Date(newTask.dueDate),
-        id: "T-" + prevState.length + 1,
+        id: `T-${prevState.length + 1}`,
       },
     ]);
+    closeModal();
   };
 
   return (
-    <div className="app-container">
-      <div className="app-content">
-        <TaskViewer taskList={taskList} />
-
-        <div className="side-bar-right">
-          <div className="card-xl">
-            <h3>Create task</h3>
-            <CreateTaskForm addNewTask={onNewTaskAdd} />
-          </div>
-        </div>
+    <div className='app-container'>
+      <div className='app-content'>
+        <TaskViewer taskList={taskList} onCreateClick={openModal} />
       </div>
+      <Modal isOpen={isOpen} onClose={closeModal}>
+        <CreateTaskForm addNewTask={onNewTaskAdd} />
+      </Modal>
     </div>
   );
 }

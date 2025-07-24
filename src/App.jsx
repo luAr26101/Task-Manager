@@ -24,7 +24,7 @@ const data = [
   {
     id: "T-4",
     name: "14 Create a Design System for Enum Workspace.",
-    status: "Todo",
+    status: "Pending",
     dueDate: new Date(2022, 5, 23),
   },
   {
@@ -48,7 +48,7 @@ const data = [
 ];
 
 function App() {
-  const [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState(data);
 
   const onNewTaskAdd = (newTask) => {
     setTaskList((prevState) => [

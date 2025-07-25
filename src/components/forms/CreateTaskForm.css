@@ -12,6 +12,11 @@
   color: #2c2e3a;
 }
 
+input,
+textarea {
+  outline: none;
+}
+
 .input-primary {
   margin: 5px 0;
   padding: 16px;

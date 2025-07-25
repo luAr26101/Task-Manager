@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { clsx } from "clsx";
+import React, { useEffect, useState } from "react";
 import "./CreateTaskForm.css";
 
 const CreateTaskForm = (props) => {
@@ -11,6 +12,54 @@ const CreateTaskForm = (props) => {
     taskDetails: "",
     isValid: true,
   });
+
+  useEffect(() => {
+    if (taskName.length === 0) {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        taskName: "This field is required",
+        isValid: false,
+      }));
+    } else {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        taskName: "",
+        isValid: true,
+      }));
+    }
+  }, [taskName]);
+
+  useEffect(() => {
+    if (taskDetails.length === 0) {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        taskDetails: "This field is required",
+        isValid: false,
+      }));
+    } else {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        taskDetails: "",
+        isValid: true,
+      }));
+    }
+  }, [taskDetails]);
+
+  useEffect(() => {
+    if (dueDate.length === 0) {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        dueDate: "This field is required",
+        isValid: false,
+      }));
+    } else {
+      setFormValidation((prevState) => ({
+        ...prevState,
+        dueDate: "",
+        isValid: true,
+      }));
+    }
+  }, [dueDate]);
 
   const handleNameChange = (event) => {
     setTaskName(event.target.value);
@@ -45,47 +94,56 @@ const CreateTaskForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label className="label-md">Task Name</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Name</label>
           <input
             value={taskName}
-            name="taskName"
+            name='taskName'
             onChange={handleNameChange}
-            className="input-primary"
-            type="text"
+            className={clsx(
+              "input-primary",
+              formValidation.taskName && " error"
+            )}
+            type='text'
           />
-          <p className="error-message"></p>
+          <p className='error-message'>{formValidation.taskName}</p>
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Due Date</label>
+        <div className='form-row'>
+          <label className='label-md'>Due Date</label>
           <input
             value={dueDate}
-            name="dueDate"
+            name='dueDate'
             onChange={handleDateChange}
-            className="input-primary"
-            type="date"
+            className={clsx(
+              "input-primary",
+              formValidation.dueDate && " error"
+            )}
+            type='date'
           />
-          <p className="error-message"></p>
+          <p className='error-message'>{formValidation.dueDate}</p>
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Task Details</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Details</label>
           <textarea
             value={taskDetails}
-            name="taskDetails"
+            name='taskDetails'
             onChange={handleDetailsChange}
-            className="input-primary"
-            cols="30"
-            rows="10"
+            className={clsx(
+              "input-primary",
+              formValidation.taskDetails && " error"
+            )}
+            cols='30'
+            rows='10'
           ></textarea>
-          <p className="error-message"></p>
+          <p className='error-message'>{formValidation.taskDetails}</p>
         </div>
 
         <button
           disabled={!formValidation.isValid}
-          className="button-primary"
-          type="submit"
+          className='button-primary'
+          type='submit'
         >
           Create Task
         </button>

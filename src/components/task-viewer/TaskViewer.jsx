@@ -18,7 +18,7 @@ const TaskViewer = (props) => {
       <div className='task-list-container'>
         {props.taskList.length > 0 ? (
           <div className='task-list-grid'>
-            {props.map((item) => (
+            {props.taskList.map((item) => (
               <TaskCard
                 key={item.id}
                 id={item.id}

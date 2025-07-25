@@ -5,6 +5,12 @@ const CreateTaskForm = (props) => {
   const [taskName, setTaskName] = useState("");
   const [dueDate, setDueDate] = useState("");
   const [taskDetails, setTaskDetails] = useState("");
+  const [formValidation, setFormValidation] = useState({
+    taskName: "",
+    dueDate: "",
+    taskDetails: "",
+    isValid: false,
+  });
 
   const handleNameChange = (event) => {
     setTaskName(event.target.value);
@@ -40,41 +46,48 @@ const CreateTaskForm = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label className="label-md">Task Name</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Name</label>
           <input
             value={taskName}
-            name="taskName"
+            name='taskName'
             onChange={handleNameChange}
-            className="input-primary"
-            type="text"
+            className='input-primary error'
+            type='text'
           />
+          <p className='error-message'>Message with error.</p>
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Due Date</label>
+        <div className='form-row'>
+          <label className='label-md'>Due Date</label>
           <input
             value={dueDate}
-            name="dueDate"
+            name='dueDate'
             onChange={handleDateChange}
-            className="input-primary"
-            type="date"
+            className='input-primary error'
+            type='date'
           />
+          <p className='error-message'>Message with error.</p>
         </div>
 
-        <div className="form-row">
-          <label className="label-md">Task Details</label>
+        <div className='form-row'>
+          <label className='label-md'>Task Details</label>
           <textarea
             value={taskDetails}
-            name="taskDetails"
+            name='taskDetails'
             onChange={handleDetailsChange}
-            className="input-primary"
-            cols="30"
-            rows="10"
+            className='input-primary error'
+            cols='30'
+            rows='10'
           ></textarea>
+          <p className='error-message'>Message with error.</p>
         </div>
 
-        <button className="button-primary" type="submit">
+        <button
+          disabled={!formValidation.isValid}
+          className='button-primary'
+          type='submit'
+        >
           Create Task
         </button>
       </form>

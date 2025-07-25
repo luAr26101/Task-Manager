@@ -1,23 +1,23 @@
 import React, { useState } from "react";
-import TaskCard from "../task-card/TaskCard";
-import ControlPanel_BUG from "../control-panel/ControlPanel";
+import ControlPanel from "../control-panel/ControlPanel";
 import EmptyListMessage from "../empty-list-message/EmptyListMessage";
+import TaskCard from "../task-card/TaskCard";
 import "./TaskViewer.css";
 
 const TaskViewer = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="task-viewer-container">
+    <div className='task-viewer-container'>
       <ControlPanel
         taskList={props.taskList}
         isOpen={isOpen}
-        setIsOpen={setIsOpen}}
+        setIsOpen={setIsOpen}
       />
 
-      <div className="task-list-container">
+      <div className='task-list-container'>
         {props.taskList.length > 0 ? (
-          <div className="task-list-grid">
+          <div className='task-list-grid'>
             {props.map((item) => (
               <TaskCard
                 key={item.id}

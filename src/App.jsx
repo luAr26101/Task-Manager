@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import "./App.css";
 import TaskViewer from "./components/task-viewer/TaskViewer";
-import "../App.css";
 
 let data = [
   {
@@ -48,7 +48,7 @@ let data = [
 ];
 
 function App() {
-  const [taskList, setTaskList] = useState(MOCK_DATA);
+  const [taskList, setTaskList] = useState(data);
 
   const onNewTaskAdd = (newTask) => {
     setTaskList((prevState) => [
@@ -62,8 +62,8 @@ function App() {
   };
 
   return (
-    <div className="app-container">
-      <div className="app-content">
+    <div className='app-container'>
+      <div className='app-content'>
         <TaskViewer onNewTaskAdd={onNewTaskAdd} taskList={taskList} />
       </div>
     </div>

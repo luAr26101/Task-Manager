@@ -13,6 +13,7 @@ const TaskViewer = (props) => {
         taskList={props.taskList}
         isOpen={isOpen}
         setIsOpen={setIsOpen}
+        onNewTaskAdd={props.onNewTaskAdd}
       />
 
       <div className='task-list-container'>
